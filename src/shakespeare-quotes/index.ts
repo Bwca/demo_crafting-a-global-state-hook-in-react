@@ -1,0 +1,1 @@
+export { ShakespeareQuoteComponent } from './ShakespeareQuoteComponent';
