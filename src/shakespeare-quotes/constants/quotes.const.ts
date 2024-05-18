@@ -1,4 +1,4 @@
-import { ShakespeareQuote } from './shakespeare-quote.model';
+import { ShakespeareQuote } from '../models';
 
 export const QUOTES: Array<Readonly<ShakespeareQuote>> = [
     { id: 1, text: 'To be, or not to be: that is the question.', source: 'Hamlet' },

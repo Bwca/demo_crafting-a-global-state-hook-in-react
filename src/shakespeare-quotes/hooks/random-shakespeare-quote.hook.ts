@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 
-import { ShakespeareQuote } from './shakespeare-quote.model';
-import { QUOTES } from './quotes.const';
-import { useQuoteState } from './state';
+import { ShakespeareQuote } from '../models';
+import { QUOTES } from '../constants';
+import { useQuoteState } from './use-quote-state.hook';
 
 export const useRandomShakespeareQuote = (): { quote: ShakespeareQuote | null; getRandomQuote: () => void } => {
     const { setRandomQuote, randomQuote } = useQuoteState();

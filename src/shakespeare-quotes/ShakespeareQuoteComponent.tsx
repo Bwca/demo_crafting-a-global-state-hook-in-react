@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { useRandomShakespeareQuote } from './random-shakespeare-quote.hook';
+import { useRandomShakespeareQuote } from './hooks';
 
 const GenerateQuote: FC = () => {
     const { getRandomQuote } = useRandomShakespeareQuote();

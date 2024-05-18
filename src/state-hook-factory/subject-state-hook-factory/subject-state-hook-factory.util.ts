@@ -2,8 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { Subject } from 'rxjs';
 
-import { GetterSetterPair } from '../models';
-import { StateHookFactory } from '../models/state-hook-factory.model';
+import { GetterSetterPair, StateHookFactory } from '../models';
 
 export const subjectStateHookFactory: StateHookFactory = <T, N extends string>(stateName: N, initialState: T) => {
     const subject$ = new Subject<T>();

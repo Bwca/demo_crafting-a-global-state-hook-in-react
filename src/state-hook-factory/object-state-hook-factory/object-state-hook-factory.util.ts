@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { GetterSetterPair } from '../models';
-import { StateHookFactory } from '../models/state-hook-factory.model';
+import { GetterSetterPair, StateHookFactory } from '../models';
 
 export const objectStateHookFactory: StateHookFactory = <T, N extends string>(stateName: N, initialState: T) => {
     const listeners: Set<(s: T) => void> = new Set();
