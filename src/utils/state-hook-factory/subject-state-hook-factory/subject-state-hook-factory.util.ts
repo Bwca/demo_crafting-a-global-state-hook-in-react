@@ -5,11 +5,11 @@ import { Subject } from 'rxjs';
 import { GetterSetterPair } from '../models';
 import { StateHookFactory } from '../models/state-hook-factory.model';
 
-export const subjectStateHookFactory: StateHookFactory = <T, STATE extends string>(stateName: STATE, initialState?: T) => {
+export const subjectStateHookFactory: StateHookFactory = <T, STATE extends string>(stateName: STATE, initialState: T) => {
     const subject$ = new Subject<T>();
 
     return (): GetterSetterPair<T, STATE> => {
-        const [state, set] = useState<T>(initialState as T);
+        const [state, set] = useState<T>(initialState);
 
         useEffect(() => {
             const subscription = subject$.subscribe((s) => set(s));
