@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { GetterSetterPair } from '../models';
 import { StateHookFactory } from '../models/state-hook-factory.model';
 
-export const objectStateHookFactory: StateHookFactory = <T, STATE extends string>(stateName: STATE, initialState: T) => {
+export const objectStateHookFactory: StateHookFactory = <T, N extends string>(stateName: N, initialState: T) => {
     const listeners: Set<(s: T) => void> = new Set();
     const currentState: any = new Proxy<{ state?: T }>(
         { state: initialState },
@@ -16,7 +16,7 @@ export const objectStateHookFactory: StateHookFactory = <T, STATE extends string
         },
     );
 
-    return (): GetterSetterPair<T, STATE> => {
+    return (): GetterSetterPair<T, N> => {
         const [state, set] = useState<T>(currentState.state as T);
 
         useEffect(() => {
@@ -30,9 +30,6 @@ export const objectStateHookFactory: StateHookFactory = <T, STATE extends string
             currentState.state = s;
         }, []);
 
-        return { [stateName]: state, [`set${stateName.charAt(0).toUpperCase()}${stateName.slice(1)}`]: setState } as GetterSetterPair<
-            T,
-            STATE
-        >;
+        return { [stateName]: state, [`set${stateName.charAt(0).toUpperCase()}${stateName.slice(1)}`]: setState } as GetterSetterPair<T, N>;
     };
 };
