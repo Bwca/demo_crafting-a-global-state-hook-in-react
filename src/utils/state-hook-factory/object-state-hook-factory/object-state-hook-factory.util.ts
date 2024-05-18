@@ -5,7 +5,7 @@ import { StateHookFactory } from '../models/state-hook-factory.model';
 
 export const objectStateHookFactory: StateHookFactory = <T, N extends string>(stateName: N, initialState: T) => {
     const listeners: Set<(s: T) => void> = new Set();
-    const currentState: any = new Proxy<{ state?: T }>(
+    const currentState = new Proxy<{ state?: T }>(
         { state: initialState },
         {
             set(target: typeof currentState, property: string, value: T) {
@@ -14,7 +14,7 @@ export const objectStateHookFactory: StateHookFactory = <T, N extends string>(st
                 return true;
             },
         },
-    );
+    ) as { state: T };
 
     return (): GetterSetterPair<T, N> => {
         const [state, set] = useState<T>(currentState.state as T);
