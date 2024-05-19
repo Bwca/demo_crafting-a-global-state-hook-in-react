@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# This is a proof of concept repo for https://dev.to/bwca/crafting-a-global-state-hook-in-react-4hb4
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
